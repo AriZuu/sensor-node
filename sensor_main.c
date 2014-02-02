@@ -47,6 +47,7 @@
 #include "mrfi_defs.h"
 
 #include "sensor_msg.h"
+#include "calib_data.h"
 
 #define MAIN_STACK_SIZE 260
 #define IDLE_STACK_SIZE 60
@@ -79,6 +80,9 @@
 #endif
 
 #endif
+
+extern int __infod[];
+unsigned char rf_freqoffset;
 
 #if NOSCFG_FEATURE_CONOUT == 1
 #define DEBUG_nosPrint(a) nosPrint(a)
@@ -451,6 +455,9 @@ static void mainTask(void *memstart)
   nosPrint("Sensor start\n");
   uosBootDiag();
 #endif
+
+  if (__infod[0] == CALIB_DATA_FINGERPRINT)
+    rf_freqoffset = __infod[1];
 
   memset(&msg, '\0', sizeof(msg));
 #ifdef __CC430F5137__
