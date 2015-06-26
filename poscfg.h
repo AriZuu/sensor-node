@@ -86,7 +86,7 @@
  * dynamically allocate memory for additional task structures if the volume
  * of tasks defined by ::POSCFG_MAX_TASKS is exhausted.
  */
-#define POSCFG_MAX_TASKS       2
+#define POSCFG_MAX_TASKS       3
 
 /** Maximum count of events.
  * This define sets the maximum count of event data structures which can be
