@@ -536,5 +536,7 @@
 
 #define HZ 10
 #define PORTCFG_IRQ_STACK_SIZE		120//200
+#define POSCFG_FEATURE_POWER 1
+#define POSCFG_FEATURE_TICKLESS 1
 
 #endif /* _POSCFG_H */
