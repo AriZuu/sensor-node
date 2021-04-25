@@ -783,12 +783,12 @@ static void initPins(void)
 
   UCA0CTL1 |= UCSWRST;
 
-#if defined(__msp430x22x4)
+#if defined(__MSP430F2274__)
 
   P3DIR |= BIT4;                            // Set P3.4 as TX output
   P3SEL |= 0x30;            // P3.4,5 = USCI_A0 TXD/RXD
 
-#elif defined(__cc430x513x)
+#elif defined(__CC430F5137__)
 
   P1DIR |= BIT6;                            // Set P1.6 as TX output
   P1SEL |= BIT5 + BIT6;                     // Select P1.5 & P1.6 to UART function

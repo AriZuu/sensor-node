@@ -536,7 +536,9 @@
 
 #define HZ 10
 #define PORTCFG_IRQ_STACK_SIZE		120//200
+#ifdef __CC430F5137__
 #define POSCFG_FEATURE_POWER 1
+#endif
 #define POSCFG_FEATURE_TICKLESS 1
 
 #endif /* _POSCFG_H */
