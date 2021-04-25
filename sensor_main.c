@@ -456,8 +456,10 @@ static void mainTask(void *memstart)
   uosBootDiag();
 #endif
 
+#ifdef __CC430F5137__
   if (__infod[0] == CALIB_DATA_FINGERPRINT)
     rf_freqoffset = __infod[1];
+#endif
 
   memset(&msg, '\0', sizeof(msg));
 #ifdef __CC430F5137__
