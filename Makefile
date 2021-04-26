@@ -33,11 +33,12 @@ PORT = msp430
 #
 # This is for TI ez430-rf2500 kit
 #
-#MCU ?= msp430f2274
+MCU ?= msp430f2274
+#COMPILER=GCC
 #
 # This is for Olimex MSP430-CCRF card
 #
-MCU ?= cc430f5137 
+#MCU ?= cc430f5137 
 
 ifeq '$(MCU)' 'msp430f2274'
 
@@ -48,10 +49,12 @@ ONEWIRE_DEFINES=
 
 else
 
-BUILD ?= DEBUG
+BUILD ?= RELEASE
 RADIO=MRFI_CC430
 TEXAS_CONF=../sensor-ap/texas_ccrf
 ONEWIRE_DEFINES=ONEWIRE SMALL_MEMORY_TARGET
+#EXTRA_CFLAGS=-Os
+export EXTRA_CFLAGS
 
 endif
 
@@ -97,7 +100,7 @@ DIR_USRINC += $(TEXAS_CONF) \
 DIR_USRINC +=	../picoos-ow \
 		../OneWire/common
 
-DIR_CONFIG = $(CURRENTDIR)
+DIR_CONFIG = $(CURRENTDIR)/config
 DIR_OUTPUT = $(CURRENTDIR)/bin
 MODULES += ../simpliciti ../picoos-micro ../picoos-ow
 
