@@ -1,0 +1,73 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Flash & launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/build/sensor-node.elf",
+            // Don't set following, it causes reconnect to gdb
+            //  "miDebuggerServerAddress": "localhost:2000",
+            "MIMode": "gdb",
+            "miDebuggerPath": "msp430-gdb",
+            "cwd": ".",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "target remote :2000"
+                },
+                {
+                    "text": "-environment-cd ${workspaceRoot}\\build"
+                },
+                {
+                    "text": "-file-exec-and-symbols sensor-node.elf",
+                    "description": "load file",
+                    "ignoreFailures": false
+                },
+                {
+                    "text": "monitor erase main"
+                },
+                {
+                    "text": "load"
+                }
+            ],
+            "logging": {
+                "engineLogging": true
+            },
+            "windows": {
+                "MIMode": "gdb"
+            }
+        },
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/build/blink_test.elf",
+            "miDebuggerServerAddress": "localhost:2000",
+            "MIMode": "gdb",
+            "miDebuggerPath": "msp430-gdb",
+            "cwd": ".",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "logging": {
+                "engineLogging": true
+            },
+            "windows": {
+                "MIMode": "gdb"
+            }
+        }
+ 
+    ]
+}
