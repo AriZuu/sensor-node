@@ -34,11 +34,11 @@ set(NANO 1)
 #
 # This is for TI ez430-rf2500 kit
 #
-set(MCU msp430f2274)
+#set(MCU msp430f2274)
 #
 # This is for Olimex MSP430-CCRF card
 #
-#set(MCU cc430f5137)
+set(MCU cc430f5137)
 
 if(MCU STREQUAL "msp430f2274")
 set(TEXAS_CONF ${CMAKE_CURRENT_SOURCE_DIR}/../sensor-ap/texas)
@@ -65,8 +65,6 @@ add_peer_directory(../picoos-ow)
 add_peer_directory(../simpliciti)
 
 target_compile_definitions(simpliciti PUBLIC 
-	NUM_CONNECTIONS=1
-	SIZE_INFRAME_Q=1
 	SIZE_OUTFRAME_Q=1
 	THIS_DEVICE_ADDRESS={{0x79,0x56,0x34,0x12}}
 	END_DEVICE
