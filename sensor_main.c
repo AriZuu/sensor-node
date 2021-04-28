@@ -81,7 +81,11 @@
 
 #endif
 
+#if __GNUC__ == 4
 extern int __infod[];
+#else
+int __attribute__((section(".infoD"))) __infod[];
+#endif
 unsigned char rf_freqoffset;
 
 #if NOSCFG_FEATURE_CONOUT == 1
